@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add New Task</h2>
+
+<mat-dialog-content [formGroup]="myForm" autocomplete="off">
+
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title" autocomplete="off">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Description" formControlName="description" autocomplete="off">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-select formControlName="tasktype" placeholder="Priority" autocomplete="off">
+                <mat-option [value]="1">Low</mat-option>
+                <mat-option [value]="2">Medium</mat-option>
+                <mat-option [value]="3">High</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button color="accent" (click)="close()">Close</button>
+    <button mat-button color="primary" (click)="onSubmitClick()">Save</button>
+</mat-dialog-actions>

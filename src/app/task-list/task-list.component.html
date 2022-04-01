@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let taskType of taskTypeList">
+            <div class="card shadow-lg">
+                <div class="card-header" [ngClass]="{'alert-info': taskType.typeId === 1,
+                        'alert-warning' : taskType.typeId === 2,
+                        ' alert-danger' : taskType.typeId === 3 }">
+                    <h3>{{taskType.typeName}}</h3>
+                </div>
+                <table class="table table-bordered table-borderless table-responsive">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let task of taskList | tableFilter:taskType.typeId; index as i">
+                            <td>{{i+1}}</td>
+                            <td>{{task.title}}</td>
+                            <td>{{task.description}}</td>
+                            <td>
+                                <button mat-mini-fab color="primary" aria-label="Details" (click)="showTaskDetails(task)">
+                                    <mat-icon>info</mat-icon>
+                                  </button>
+                                <button mat-mini-fab color="warn" aria-label="Delete" (click)="deleteTask(task.id)">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
